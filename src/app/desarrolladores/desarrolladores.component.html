@@ -1,0 +1,42 @@
+<form [formGroup]="registroForm" class="example-container"
+  (submit)="submit()">
+    <mat-form-field>
+      <input matInput placeholder="Nombre" formControlName="nombre" type="text">
+      <mat-error>
+        <span *ngIf="registroForm?.controls?.nombre?.errors?.required">Valor requerido</span>
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput placeholder="Apellido Paterno" formControlName="apellidoPaterno" type="text">
+      <mat-error>
+          <span *ngIf="registroForm?.controls?.apellidoPaterno?.errors?.required">Valor requerido</span>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Apellido Materno" formControlName="apellidoMaterno" type="text">
+      <mat-error>
+          <span *ngIf="registroForm?.controls?.apellidoMaterno?.errors?.required">Valor requerido</span>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Nivel" formControlName="idNivel">
+          <mat-option *ngFor="let nivel of niveles" [value]="nivel.id">{{nivel.name}}</mat-option>
+      </mat-select>
+      <mat-error>
+          <span *ngIf="registroForm?.controls?.idNivel?.errors?.required">Valor requerido</span>
+        </mat-error>
+    </mat-form-field>
+
+    <div>
+      <button mat-icon-button type="submit" [disabled]="!registroForm.valid">
+        <mat-icon>check_circle</mat-icon>
+      </button>
+
+      <button mat-icon-button>
+          <mat-icon>help</mat-icon>
+        </button>
+    </div>
+</form>
